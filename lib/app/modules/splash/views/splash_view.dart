@@ -3,7 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:get/get.dart';
 import 'package:kdigital_curry_ecom/app/utils/constants/app_colors.dart';
-import 'package:kdigital_curry_ecom/app/utils/constants/asset_constants.dart';
 import 'package:lottie/lottie.dart';
 
 import '../controllers/splash_controller.dart';
@@ -15,7 +14,6 @@ class SplashView extends GetView<SplashController> {
     return Scaffold(
       backgroundColor: MyAppColors.primaryColor,
       body: Column(
-        // crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Flexible(
