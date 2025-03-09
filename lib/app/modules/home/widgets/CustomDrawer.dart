@@ -13,18 +13,20 @@ class CustomDrawer extends StatefulWidget {
 
 class _CustomDrawerState extends State<CustomDrawer> {
   final FirebaseService authService = Get.find<FirebaseService>();
-  String userName = '';
-  String email = '';
+  RxString userName = ''.obs;
+  RxString email = ''.obs;
   @override
   void initState() {
     super.initState();
     fetchUser();
+    print("username $userName");
+    print("email $email");
   }
 
   Future<void> fetchUser() async {
     final pref = await SharedPreferences.getInstance();
-    email = pref.getString("Email") ?? '';
-    userName = pref.getString("userName") ?? '';
+    email.value = pref.getString("Email") ?? 'abc@gmail.com';
+    userName.value = pref.getString("userName") ?? '';
   }
 
   @override
@@ -34,13 +36,17 @@ class _CustomDrawerState extends State<CustomDrawer> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           UserAccountsDrawerHeader(
-            accountName: Text(
-              userName,
-              style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.bold),
+            accountName: Obx(
+              () => Text(
+                userName.value,
+                style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.bold),
+              ),
             ),
-            accountEmail: Text(
-              email,
-              style: TextStyle(fontSize: 16.sp),
+            accountEmail: Obx(
+              () => Text(
+                email.value,
+                style: TextStyle(fontSize: 16.sp),
+              ),
             ),
             currentAccountPicture: CircleAvatar(
               backgroundColor: MyAppColors.primaryColor,
