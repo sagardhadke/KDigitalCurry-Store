@@ -5,6 +5,7 @@ import '../modules/home/views/home_view.dart';
 import '../modules/login/bindings/login_binding.dart';
 import '../modules/login/views/login_view.dart';
 import '../modules/productDetails/bindings/product_details_binding.dart';
+import '../modules/productDetails/views/add_to_cart_view.dart';
 import '../modules/productDetails/views/product_details_view.dart';
 import '../modules/productListing/bindings/product_listing_binding.dart';
 import '../modules/productListing/views/product_listing_view.dart';
@@ -20,7 +21,7 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.PRODUCT_LISTING;
+  static const INITIAL = Routes.HOME;
 
   static final routes = [
     GetPage(
@@ -54,9 +55,15 @@ class AppPages {
       binding: ProductDetailsBinding(),
     ),
     GetPage(
+      name: _Paths.ADD_TO_CART,
+      page: () => AddToCartProduct(),
+      binding: ProductDetailsBinding(),
+    ),
+    GetPage(
       name: _Paths.PRODUCT_WISH_LIST,
       page: () => const ProductWishListView(),
       binding: ProductWishListBinding(),
     ),
+    
   ];
 }

@@ -72,6 +72,11 @@ class LoginView extends GetView<LoginController> {
                     ),
                     SizedBox(height: 10.h),
                     TextField(
+                      onTapOutside: (event) {
+                        if (FocusManager.instance.primaryFocus != null) {
+                          FocusManager.instance.primaryFocus!.unfocus();
+                        }
+                      },
                       controller: controller.usernameController,
                       decoration: InputDecoration(
                         hintText: "Enter User Name",
@@ -109,6 +114,11 @@ class LoginView extends GetView<LoginController> {
                       () => TextField(
                         controller: controller.passwordController,
                         obscureText: !controller.passwordVisible.value,
+                        onTapOutside: (event) {
+                          if (FocusManager.instance.primaryFocus != null) {
+                            FocusManager.instance.primaryFocus!.unfocus();
+                          }
+                        },
                         decoration: InputDecoration(
                           hintText: "Enter Password",
                           border: OutlineInputBorder(

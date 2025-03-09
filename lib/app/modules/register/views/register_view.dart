@@ -69,6 +69,11 @@ class RegisterView extends GetView<RegisterController> {
                       SizedBox(height: 10.h),
                       TextField(
                         controller: controller.fullNameController,
+                        onTapOutside: (event) {
+                          if (FocusManager.instance.primaryFocus != null) {
+                            FocusManager.instance.primaryFocus!.unfocus();
+                          }
+                        },
                         decoration: InputDecoration(
                           hintText: "Enter your Full Name",
                           border: OutlineInputBorder(
@@ -108,6 +113,11 @@ class RegisterView extends GetView<RegisterController> {
                         inputFormatters: [
                           FilteringTextInputFormatter.digitsOnly
                         ],
+                        onTapOutside: (event) {
+                          if (FocusManager.instance.primaryFocus != null) {
+                            FocusManager.instance.primaryFocus!.unfocus();
+                          }
+                        },
                         decoration: InputDecoration(
                           hintText: "Enter Phone Number",
                           border: OutlineInputBorder(
@@ -148,6 +158,11 @@ class RegisterView extends GetView<RegisterController> {
                       SizedBox(height: 10.h),
                       TextField(
                         controller: controller.emailController,
+                        onTapOutside: (event) {
+                          if (FocusManager.instance.primaryFocus != null) {
+                            FocusManager.instance.primaryFocus!.unfocus();
+                          }
+                        },
                         decoration: InputDecoration(
                           hintText: "Enter Your Email",
                           border: OutlineInputBorder(
@@ -182,6 +197,11 @@ class RegisterView extends GetView<RegisterController> {
                       SizedBox(height: 10.h),
                       TextField(
                         controller: controller.addressController,
+                        onTapOutside: (event) {
+                          if (FocusManager.instance.primaryFocus != null) {
+                            FocusManager.instance.primaryFocus!.unfocus();
+                          }
+                        },
                         decoration: InputDecoration(
                           hintText: "Enter Address",
                           border: OutlineInputBorder(
@@ -216,6 +236,11 @@ class RegisterView extends GetView<RegisterController> {
                       SizedBox(height: 10.h),
                       TextField(
                         controller: controller.userNameController,
+                        onTapOutside: (event) {
+                          if (FocusManager.instance.primaryFocus != null) {
+                            FocusManager.instance.primaryFocus!.unfocus();
+                          }
+                        },
                         decoration: InputDecoration(
                           hintText: "Enter User Name",
                           border: OutlineInputBorder(
@@ -252,6 +277,11 @@ class RegisterView extends GetView<RegisterController> {
                         () => TextField(
                           controller: controller.passwordController,
                           obscureText: !controller.passwordVisible.value,
+                          onTapOutside: (event) {
+                            if (FocusManager.instance.primaryFocus != null) {
+                              FocusManager.instance.primaryFocus!.unfocus();
+                            }
+                          },
                           decoration: InputDecoration(
                             hintText: "Enter Password",
                             border: OutlineInputBorder(

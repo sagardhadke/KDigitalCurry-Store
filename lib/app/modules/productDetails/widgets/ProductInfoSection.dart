@@ -23,11 +23,7 @@ class ProductInfoSection extends StatelessWidget {
               "Iron on low heat if needed, avoiding the textured creases."),
           const BulletPointText("Do not dry clean."),
           const SizedBox(height: 16),
-
-          
           const Divider(thickness: 1.2),
-
-        
           const SizedBox(height: 16),
           Row(
             children: [
@@ -43,7 +39,7 @@ class ProductInfoSection extends StatelessWidget {
           const ShippingInfoItem(
               icon: Icons.credit_card, text: "100% Secure Payment"),
           const ShippingInfoItem(
-              icon: Icons.fire_truck, text: "Free Shipping Order Above \$300"),
+              icon: Icons.fire_truck, text: "Free Shipping Order Above ₹300"),
           const ShippingInfoItem(
               icon: Icons.repeat_rounded, text: "Extended Returns"),
         ],

@@ -7,6 +7,7 @@ import 'package:kdigital_curry_ecom/app/modules/home/views/productCard.dart';
 import 'package:kdigital_curry_ecom/app/utils/constants/app_colors.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
+import '../../../routes/app_pages.dart';
 import '../controllers/home_controller.dart';
 
 class HomeView extends GetView<HomeController> {
@@ -148,11 +149,15 @@ class HomeView extends GetView<HomeController> {
                 physics: NeverScrollableScrollPhysics(),
                 itemCount: controller.categoryImages.length,
                 itemBuilder: (BuildContext context, int index) {
-                  return Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-                    child: Image.asset(
-                      controller.categoryImages[index],
-                      fit: BoxFit.cover,
+                  return InkWell(
+                    onTap: () => Get.toNamed(Routes.PRODUCT_LISTING),
+                    child: Padding(
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+                      child: Image.asset(
+                        controller.categoryImages[index],
+                        fit: BoxFit.cover,
+                      ),
                     ),
                   );
                 },

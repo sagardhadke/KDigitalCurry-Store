@@ -23,7 +23,7 @@ class ProductListingView extends GetView<ProductListingController> {
                 Icons.favorite_border,
               ),
               onPressed: () {
-                Get.toNamed(Routes.PRODUCT_WISH_LIST);
+                Get.toNamed(Routes.ADD_TO_CART);
               },
             )
           ],
@@ -88,7 +88,7 @@ class ProductListingView extends GetView<ProductListingController> {
                                   crossAxisCount: 2,
                                   mainAxisSpacing: 10,
                                   crossAxisSpacing: 10,
-                                  mainAxisExtent: 285.h,
+                                  mainAxisExtent: 290.h,
                                 ),
                                 itemCount: controller.filteredProducts.length,
                                 itemBuilder: (BuildContext context, int index) {

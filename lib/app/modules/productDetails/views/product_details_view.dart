@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:kdigital_curry_ecom/app/routes/app_pages.dart';
 import 'package:kdigital_curry_ecom/app/utils/constants/app_colors.dart';
 import '../controllers/product_details_controller.dart';
 import '../widgets/ProductInfoSection.dart';
@@ -17,6 +18,13 @@ class ProductDetailsView extends GetView<ProductDetailsController> {
         backgroundColor: Colors.white,
         title: const Text('Product Details'),
         scrolledUnderElevation: 0,
+        actions: [
+          IconButton(
+              onPressed: () {
+                Get.toNamed(Routes.ADD_TO_CART);
+              },
+              icon: Icon(Icons.shopping_bag_outlined))
+        ],
       ),
       body: SingleChildScrollView(
         child: Obx(
@@ -43,7 +51,7 @@ class ProductDetailsView extends GetView<ProductDetailsController> {
                             fit: BoxFit.cover,
                           );
                         },
-                        imageUrl: controller.getDetails.image ?? '',
+                        imageUrl: controller.getDetails?.image ?? '',
                         height: 350.h,
                         width: double.infinity,
                         fit: BoxFit.contain,
@@ -52,15 +60,15 @@ class ProductDetailsView extends GetView<ProductDetailsController> {
                         height: 15.h,
                       ),
                       Text(
-                        controller.getDetails.title ?? '',
+                        controller.getDetails?.title ?? '',
                         style: TextStyle(
                             fontSize: 20, fontWeight: FontWeight.bold),
                       ),
                       SizedBox(height: 10),
-                      Text(controller.getDetails.description ?? ''),
+                      Text(controller.getDetails?.description ?? ''),
                       SizedBox(height: 10),
                       Text(
-                        "₹${controller.getDetails.price}",
+                        "₹${controller.getDetails?.price}",
                         style: TextStyle(
                             fontSize: 18.sp,
                             color: MyAppColors.textColor,
@@ -96,7 +104,12 @@ class ProductDetailsView extends GetView<ProductDetailsController> {
                               borderRadius: BorderRadius.circular(8),
                             ),
                           ),
-                          onPressed: () {},
+                          onPressed: () {
+                            controller.productsId
+                                .add(controller.getDetails?.id ?? 0);
+                            print(
+                                "Product Id ${controller.getDetails?.id} and ${controller.productsId}");
+                          },
                           child: const Text(
                             "Add to Cart",
                             style: TextStyle(fontSize: 16, color: Colors.black),
@@ -115,7 +128,9 @@ class ProductDetailsView extends GetView<ProductDetailsController> {
                               borderRadius: BorderRadius.circular(8),
                             ),
                           ),
-                          onPressed: () {},
+                          onPressed: () {
+                            Get.toNamed(Routes.ADD_TO_CART);
+                          },
                           child: const Text(
                             "Buy Now",
                             style: TextStyle(fontSize: 16),
