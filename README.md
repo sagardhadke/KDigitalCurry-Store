@@ -36,6 +36,53 @@
   </tr>
  </table>
 
+<table>
+  <tr>
+     <td>home 1</td>
+     <td>home 2</td>
+     <td>home 3</td>
+     <td>home 4</td>
+     <td>home 5</td>
+  </tr>
+  <tr>
+    <td><img src="assets/Screens/home1.png" width=270 ></td>
+    <td><img src="assets/Screens/home2.png" width=270 ></td>
+    <td><img src="assets/Screens/home3.png" width=270 ></td>
+    <td><img src="assets/Screens/home4.png" width=270 ></td>
+    <td><img src="assets/Screens/home5.png" width=270 ></td>
+  </tr>
+ </table>
+
+<table>
+  <tr>
+     <td>home 6</td>
+     <td>Product Listing</td>
+     <td>Product Filtering 1</td>
+     <td>Product Filtering 2</td>
+     <td>Product WhishList</td>
+  </tr>
+  <tr>
+    <td><img src="assets/Screens/home6.png" width=270 ></td>
+    <td><img src="assets/Screens/product.png" width=270 ></td>
+    <td><img src="assets/Screens/product_filter1.png" width=270 ></td>
+    <td><img src="assets/Screens/product_filter2.png" width=270 ></td>
+    <td><img src="assets/Screens/whishlist.png" width=270 ></td>
+  </tr>
+ </table>
+
+ <table>
+  <tr>
+     <td>Add To Cart</td>
+     <td>Add To Cart 2</td>
+     <td>Payment Done</td>
+  </tr>
+  <tr>
+    <td><img src="assets/Screens/addToCart1.png" width=270 ></td>
+    <td><img src="assets/Screens/addToCart2.png" width=270 ></td>
+    <td><img src="assets/Screens/payment_done.png" width=270 ></td>
+  </tr>
+ </table>
+ 
 ## Installation
 
 ### Prerequisites
