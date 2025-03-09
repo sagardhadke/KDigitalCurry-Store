@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "23236729858",
+    "project_id": "kdigitalcurry-ecom",
+    "storage_bucket": "kdigitalcurry-ecom.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:23236729858:android:28e9769095411d40d65b1b",
+        "android_client_info": {
+          "package_name": "me.sagardhadke.kdigitalcurryecomm"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBsP1AGGuot58Cbt7FftAaohp985L8adzI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:kdigital_curry_ecom/app/modules/home/views/CategoryCard.dart';
 import 'package:kdigital_curry_ecom/app/modules/home/views/productCard.dart';
+import 'package:kdigital_curry_ecom/app/modules/home/widgets/CustomDrawer.dart';
 import 'package:kdigital_curry_ecom/app/utils/constants/app_colors.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
@@ -19,7 +20,7 @@ class HomeView extends GetView<HomeController> {
       appBar: AppBar(
         scrolledUnderElevation: 0,
         backgroundColor: Colors.white,
-        title: const Text('HomeView'),
+        title: const Text('Home'),
         actions: [
           Icon(
             Icons.person_outline_sharp,
@@ -28,9 +29,12 @@ class HomeView extends GetView<HomeController> {
           SizedBox(
             width: 12.w,
           ),
-          Icon(
-            Icons.shopping_bag_outlined,
-            color: Colors.black,
+          GestureDetector(
+            onTap: () => Get.toNamed(Routes.ADD_TO_CART),
+            child: Icon(
+              Icons.shopping_bag_outlined,
+              color: Colors.black,
+            ),
           ),
           SizedBox(
             width: 15.w,
@@ -249,7 +253,7 @@ class HomeView extends GetView<HomeController> {
               height: 10,
             ),
             SizedBox(
-              height: 200.h,
+              height: 0.26.sh,
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
                 physics: BouncingScrollPhysics(),
@@ -303,8 +307,9 @@ class HomeView extends GetView<HomeController> {
               height: 10,
             ),
             SizedBox(
-              height: 200.h,
+              height: 0.26.sh,
               child: ListView.builder(
+                shrinkWrap: true,
                 scrollDirection: Axis.horizontal,
                 physics: BouncingScrollPhysics(),
                 padding: EdgeInsets.symmetric(horizontal: 16),
@@ -445,6 +450,7 @@ class HomeView extends GetView<HomeController> {
           ],
         ),
       ),
+      drawer: CustomDrawer(),
     );
   }
 }

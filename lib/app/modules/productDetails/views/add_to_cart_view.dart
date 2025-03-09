@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:kdigital_curry_ecom/app/modules/productDetails/controllers/product_details_controller.dart';
+import 'package:kdigital_curry_ecom/app/modules/productDetails/views/pay_done_view.dart';
 
 class AddToCartProduct extends StatefulWidget {
   const AddToCartProduct({super.key});
@@ -415,7 +416,7 @@ class _AddToCartProductState extends State<AddToCartProduct> {
                     SizedBox(
                       width: double.infinity,
                       child: ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () => Get.to(() => PayDone()),
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.red,
                           foregroundColor: Colors.white,

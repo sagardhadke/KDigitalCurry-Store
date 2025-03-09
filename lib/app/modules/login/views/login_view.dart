@@ -13,33 +13,35 @@ class LoginView extends GetView<LoginController> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.red.shade800,
-      body: Column(
-        children: [
-          Container(
-            height: 300.h,
-            width: double.infinity,
-            color: MyAppColors.primaryColor,
-            child: Center(
-              child: Image.asset(
-                height: 200.h,
-                width: 200.w,
-                'assets/icons/kDigitalCurryLogo.png',
-                color: Colors.white,
-              ),
-            ),
-          ),
-          Expanded(
-            child: Container(
-              width: double.infinity,
-              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 30),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(50),
-                  topRight: Radius.circular(50),
+      body: SingleChildScrollView(
+        child: Form(
+          key: controller.loginFormKey,
+          child: Column(
+            children: [
+              Container(
+                height: 300.h,
+                width: double.infinity,
+                color: MyAppColors.primaryColor,
+                child: Center(
+                  child: Image.asset(
+                    height: 200.h,
+                    width: 200.w,
+                    'assets/icons/kDigitalCurryLogo.png',
+                    color: Colors.white,
+                  ),
                 ),
               ),
-              child: SingleChildScrollView(
+              Container(
+                height: 0.90.sh,
+                width: double.infinity,
+                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 30),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(50),
+                    topRight: Radius.circular(50),
+                  ),
+                ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -71,11 +73,22 @@ class LoginView extends GetView<LoginController> {
                       ],
                     ),
                     SizedBox(height: 10.h),
-                    TextField(
+                    TextFormField(
                       onTapOutside: (event) {
                         if (FocusManager.instance.primaryFocus != null) {
                           FocusManager.instance.primaryFocus!.unfocus();
                         }
+                      },
+                      onChanged: (value) {
+                        if (controller.isLoginFormClicked) {
+                          controller.loginFormKey.currentState!.validate();
+                        }
+                      },
+                      validator: (username) {
+                        if (username == null || username.isEmpty) {
+                          return 'UserName is required';
+                        }
+                        return null;
                       },
                       controller: controller.usernameController,
                       decoration: InputDecoration(
@@ -111,13 +124,24 @@ class LoginView extends GetView<LoginController> {
                     ),
                     SizedBox(height: 10.h),
                     Obx(
-                      () => TextField(
+                      () => TextFormField(
                         controller: controller.passwordController,
                         obscureText: !controller.passwordVisible.value,
                         onTapOutside: (event) {
                           if (FocusManager.instance.primaryFocus != null) {
                             FocusManager.instance.primaryFocus!.unfocus();
                           }
+                        },
+                        onChanged: (value) {
+                          if (controller.isLoginFormClicked) {
+                            controller.loginFormKey.currentState!.validate();
+                          }
+                        },
+                        validator: (pass) {
+                          if (pass == null || pass.isEmpty) {
+                            return 'Password is required';
+                          }
+                          return null;
                         },
                         decoration: InputDecoration(
                           hintText: "Enter Password",
@@ -163,7 +187,6 @@ class LoginView extends GetView<LoginController> {
                             ],
                           ),
                           TextButton(
-                            // onPressed: () => controller.forgotPassword(),
                             onPressed: () {},
                             child: Text(
                               "Forgot Password ?",
@@ -180,21 +203,31 @@ class LoginView extends GetView<LoginController> {
                       width: double.infinity,
                       height: 55.h,
                       child: ElevatedButton(
-                        onPressed: () => controller.login(),
+                        onPressed: controller.isUserLogging.value
+                            ? null
+                            : () {
+                                if (controller.loginFormKey.currentState!
+                                    .validate()) {
+                                  controller.login();
+                                }
+                              },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: MyAppColors.primaryColor,
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(8),
                           ),
                         ),
-                        child: Text(
-                          "Log In",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 20.sp,
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
+                        child: controller.isUserLogging.value
+                            ? const CircularProgressIndicator(
+                                color: Colors.white)
+                            : Text(
+                                "Log In",
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 20.sp,
+                                  fontWeight: FontWeight.w500,
+                                ),
+                              ),
                       ),
                     ),
                     SizedBox(height: 16.h),
@@ -214,9 +247,9 @@ class LoginView extends GetView<LoginController> {
                   ],
                 ),
               ),
-            ),
+            ],
           ),
-        ],
+        ),
       ),
     );
   }

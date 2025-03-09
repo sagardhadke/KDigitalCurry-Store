@@ -23,7 +23,7 @@ class ProductListingView extends GetView<ProductListingController> {
                 Icons.favorite_border,
               ),
               onPressed: () {
-                Get.toNamed(Routes.ADD_TO_CART);
+                Get.toNamed(Routes.PRODUCT_WISH_LIST);
               },
             )
           ],
